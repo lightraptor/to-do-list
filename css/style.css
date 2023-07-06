@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+    /* background: linear-gradient(135deg, #153677, #4e085f); */
+}
+
+.task {
+    display: flex;
+    flex-direction: row;
+}
+ul .task li {
+    list-style-type: none;
+    margin:0 1vw;
+    cursor: pointer;
+}
+
+
+
+
