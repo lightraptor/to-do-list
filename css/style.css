@@ -1,27 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 *{
     margin: 0;
     padding: 0;
     font-family: 'Poppins',sans-serif;
     box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
 }
-
+body {
+    background-color:#ECF2FF;
+}
 .container {
+    margin: 0!important;
     width: 100%;
     min-height: 100vh;
     padding: 10px;
     /* background: linear-gradient(135deg, #153677, #4e085f); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #ECF2FF;
 }
+
+.todo-list {
+    background-color: #3E54AC;
+    margin: 10px auto;
+    width: 25%;
+    text-align: center;
+    box-shadow: -8px 6px 10px -2px rgba(0,0,0,0.38);
+    -webkit-box-shadow: -8px 6px 10px -2px rgba(0,0,0,0.38);
+    -moz-box-shadow: -8px 6px 10px -2px rgba(0,0,0,0.38);
+    color: #ECF2FF;
+}
+
+.add-wrap {
+    background-color: #BFACE2;
+    width: 60%;
+    margin: 0 auto;
+    justify-content: center;
+    box-shadow: -11px 10px 10px -7px rgba(0,0,0,0.38);
+    -webkit-box-shadow: -11px 10px 10px -7px rgba(0,0,0,0.38);
+    -moz-box-shadow: -11px 10px 10px -7px rgba(0,0,0,0.38);
+    height: 42px;
+}
+
+.add-wrap input[type="text"] {
+    background-color: #BFACE2;
+    width: 75%;
+}
+.add-wrap button {
+    width: 25%;
+    background-color: #655DBB;
+    color: white;
+}
+
+.add-wrap input[type="text"]::placeholder {
+    color: white;
+    text-align: center;
+}
+
+.add-wrap input[type="text"],
+.add-wrap button {
+    outline: none;
+    border: none;
+}
+
 
 .task {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: 60%;
+    margin: 5px auto;
 }
-ul .task li {
+.task input[type="checkbox"] {
+    margin-right: 15px ;
+}
+li {
+    display: flex;
     list-style-type: none;
-    margin:0 1vw;
-    cursor: pointer;
+    align-items: center;
+    width: 60%;
 }
 
+input[type="checkbox"] {
+    transform: scale(1.5);
+  }
+@media only screen and (max-width: 500px) {
+  
+    .add-wrap, .task, .todo-list {
+        width: 95%;
+    }
 
+}
 
-
+@media only screen and (min-width: 501px) and (max-width: 768px) {
+    .todo-list{
+        width: 50%;
+    }
+    .add-wrap {
+        width: 50%;
+    }
+}
