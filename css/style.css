@@ -86,6 +86,14 @@ li {
 input[type="checkbox"] {
     transform: scale(1.5);
   }
+
+i.fa-solid.fa-pen-to-square,
+i.fa-regular.fa-trash-can {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    transform: scale(1.5);
+}
 @media only screen and (max-width: 500px) {
   
     .add-wrap, .task, .todo-list {
