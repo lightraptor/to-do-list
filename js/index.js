@@ -53,7 +53,6 @@ function addTask() {
     deleteButton.classList.add("fa-regular", "fa-trash-can");
     deleteButton.addEventListener("click", function() {
         task.remove();
-        saveTasksToLocalStorage();
     });
 
     task.appendChild(checkbox);
@@ -62,7 +61,7 @@ function addTask() {
     task.appendChild(deleteButton);
     listContainer.appendChild(task);
 
-    saveTasksToLocalStorage(); // Lưu danh sách công việc vào localStorage
+     // Lưu danh sách công việc vào localStorage
     inputBox.value = '';
 }
 
@@ -84,25 +83,22 @@ function toggleTaskCompletion() {
 function enableEditMode(li) {
     li.contentEditable = true;
     li.classList.add("editable");
+    placeCursorAtEnd(li);
 }
+
+function placeCursorAtEnd(element) {
+    const range = document.createRange();
+    const selection = window.getSelection();
+    range.selectNodeContents(element);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    element.focus();
+  }
 
 function disableEditMode(li) {
     li.contentEditable = false;
     li.classList.remove("editable");
 }
 
-function saveTasksToLocalStorage() {
-    const tasks = listContainer.innerHTML;
-    localStorage.setItem("tasks", tasks);
-  }
-  
-  function loadTasksFromLocalStorage() {
-    const tasks = localStorage.getItem("tasks");
-    if (tasks) {
-      listContainer.innerHTML = tasks;
-    }
-  }
-  
-  window.addEventListener("DOMContentLoaded", function () {
-    loadTasksFromLocalStorage();
-  });
+
