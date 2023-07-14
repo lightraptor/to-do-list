@@ -54,6 +54,12 @@ function addTask() {
     inputBox.value = '';
 }
 
+inputBox.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        addTask();
+    }
+})
+
 function toggleTaskCompletion() {
     const li = this.nextElementSibling;
     if (editMode == false) {
