@@ -1,7 +1,8 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 let editMode = false; // Biến để xác định trạng thái chỉnh sửa
-
+const editButton = document.createElement("i");
+editButton.classList.add("fa-solid", "fa-pen-to-square");
 function addTask() {
     if (inputBox.value === '') {
         alert("You must write something!");
@@ -17,13 +18,22 @@ function addTask() {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.addEventListener("change", toggleTaskCompletion);
-
     const editButton = document.createElement("i");
     //editButton.innerHTML = "Edit";
     // <i class="fa-solid fa-pen-to-square"></i>
     // <i class="fa-solid fa-check"></i>
     editButton.classList.add("fa-solid", "fa-pen-to-square");
     editButton.addEventListener("click", function() {
+        li.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent the default behavior of creating a new line
+                disableEditMode(li);
+                editButton.classList.remove("fa-check");
+                editButton.classList.add("fa-pen-to-square");
+                editMode = false;
+            }
+        });
+
         if (!editMode) {
             enableEditMode(li);
             //editButton.innerHTML = "Save";
