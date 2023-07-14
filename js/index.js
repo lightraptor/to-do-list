@@ -53,6 +53,7 @@ function addTask() {
     deleteButton.classList.add("fa-regular", "fa-trash-can");
     deleteButton.addEventListener("click", function() {
         task.remove();
+        saveTasksToLocalStorage();
     });
 
     task.appendChild(checkbox);
@@ -61,6 +62,7 @@ function addTask() {
     task.appendChild(deleteButton);
     listContainer.appendChild(task);
 
+    saveTasksToLocalStorage(); // Lưu danh sách công việc vào localStorage
     inputBox.value = '';
 }
 
@@ -88,3 +90,19 @@ function disableEditMode(li) {
     li.contentEditable = false;
     li.classList.remove("editable");
 }
+
+function saveTasksToLocalStorage() {
+    const tasks = listContainer.innerHTML;
+    localStorage.setItem("tasks", tasks);
+  }
+  
+  function loadTasksFromLocalStorage() {
+    const tasks = localStorage.getItem("tasks");
+    if (tasks) {
+      listContainer.innerHTML = tasks;
+    }
+  }
+  
+  window.addEventListener("DOMContentLoaded", function () {
+    loadTasksFromLocalStorage();
+  });
