@@ -3,6 +3,8 @@ const listContainer = document.getElementById("list-container");
 let editMode = false; // Biến để xác định trạng thái chỉnh sửa
 const editButton = document.createElement("i");
 editButton.classList.add("fa-solid", "fa-pen-to-square");
+const sound = new Audio("click sound.mp3");
+
 function addTask() {
     if (inputBox.value === '') {
         alert("You must write something!");
@@ -72,6 +74,7 @@ inputBox.addEventListener("keydown", function(event) {
 })
 
 function toggleTaskCompletion() {
+    sound.play();
     const li = this.nextElementSibling;
     if (editMode == false) {
         li.style.textDecoration = this.checked ? "line-through" : "none";
